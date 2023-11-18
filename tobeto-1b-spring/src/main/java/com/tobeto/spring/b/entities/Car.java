@@ -1,20 +1,33 @@
 package com.tobeto.spring.b.entities;
 
 import jakarta.persistence.*;
-@Table(name = "cars")
+
+@Table(name="cars")
 @Entity
 public class Car {
     @Id
-    @Column(name = "id")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "model_year")
-    private int model_year;
-    @Column(name = "model_name")
-    private String model_name;
+    @Column(name="model_year")
+    private int modelYear;
+    @Column(name="model_name")
+    private String modelName;
+    @Column(name="color")
+    private String color;
+    @Column(name="fuel_type")
+    private String fuelType;
+    @Column(name="shift_type")
+    private String shiftType;
+    @Column(name="price")
+    private double price;
 
-    public Car() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
 
-    // private int brand_id;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
+
 }
